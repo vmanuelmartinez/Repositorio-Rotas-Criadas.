@@ -1,0 +1,32 @@
+### 
+
+
+GET http://localhost:9000/guias HTTP/1.1
+Content-Type: application/json
+
+###
+
+PUT http://localhost:9000/guias/631b9d05174f9999c1e2da15 HTTP/1.1
+Content-Type: application/json
+
+[
+  {
+    "_id": "631b9d05174f9999c1e2da15",
+    "nome": "Nara",
+    "numeroTelefone": 123123,
+    "disponivel": false,
+    "__v": 0
+  }
+]
+
+### 
+POST http://localhost:9000/guias/ HTTP/1.1
+Content-Type: application/json
+
+
+[{
+"nome": "Andrés",
+
+        "numeroTelefone": 123123213,
+
+        "disponivel": "true" } ]
