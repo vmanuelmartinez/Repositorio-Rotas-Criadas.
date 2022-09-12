@@ -7,6 +7,13 @@ const GuiaSchema = require('./models/guias')
 const RoteiroSchema = require('./models/roteiros')
 app.use(express.json())
 
+// Setup swagger
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 //Conexão com Moongoose
 
 mongoose
@@ -53,9 +60,9 @@ app.get("/listar/guia/:id", async (req, res) => {
 
 app.put("/atualizar/guia/:id", async (req, res) => {
         const { id } = req.params; 
-        const {nome, numeroTelefone, disponivel } = req.body;
+        const {nomeGuia, numeroTelefone, disponivel } = req.body;
         await GuiaSchema 
-        .updateOne({ _id: id }, { $set: {nome,numeroTelefone, disponivel }})
+        .updateOne({ _id: id }, { $set: { nomeGuia, numeroTelefone, disponivel }})
         .then((data) => res.json(data))
         .catch((error) => res.json({ msg: error}))       
                 

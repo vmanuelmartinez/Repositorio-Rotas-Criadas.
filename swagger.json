@@ -1,0 +1,84 @@
+{
+   "openapi": "3.0.0",
+   "info": {
+    "title": "API Rest de Trilhas",
+    "description": "API desenvolvida com objetivo de apresentar como projeto final para o curso Back-End da Toti",
+    "contact": {
+        "name": "Link do repositório - Colaboradores: Dariannis Lopez, Karina Perdomo e Victor Martinez",
+        "url": "https://github.com/vmanuelmartinez/Repositorio-Rotas-Criadas./tree/master"
+    },
+    "version": "1.0.0"
+   },
+   "servers": [
+    {
+    "url": "http://localhost:9000/",
+    "description": "API de test"
+    }
+   ],
+   "paths": {
+    "/adicionar/guia": {
+        "post": {
+            "summary": "Adicionar guia",
+            "description": "Essa rota será responsável por adicionar um novo guia",
+            "tags": ["Guias"],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Guia"          
+                        },
+                        "examples": {
+                            "Guia": {
+                                "value": {
+                                    "nomeGuia": "Antônio Banderas",
+                                    "numeroTelefone": 119853451030,
+                                    "disponivel": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Successfully created!",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#/components/schemas/Guia"
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Error creating"
+                }
+            }
+        }
+    }
+   },
+   "components": {
+    "schemas": {
+        "Guia": {
+            "type": "object",
+            "properties": {
+                "nomeGuia": {
+                    "type": "string"
+                },
+                "numeroTelefone": {
+                    "type": "number"
+                },
+                "disponivel": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+   }
+}
