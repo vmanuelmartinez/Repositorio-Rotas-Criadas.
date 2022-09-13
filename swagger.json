@@ -2,7 +2,7 @@
    "openapi": "3.0.0",
    "info": {
     "title": "API Rest de Trilhas",
-    "description": "API desenvolvida com objetivo de apresentar como projeto final para o curso Back-End da Toti",
+    "description": "API desenvolvida com objetivo de apresentar como projeto final para o curso da Toti",
     "contact": {
         "name": "Link do repositório - Colaboradores: Dariannis Lopez, Karina Perdomo e Victor Martinez",
         "url": "https://github.com/vmanuelmartinez/Repositorio-Rotas-Criadas./tree/master"
@@ -58,6 +58,435 @@
                 }
             }
         }
+    },
+    "/adicionar/roteiro": {
+        "post": {
+            "summary": "Adicionar roteiro",
+            "description": "Essa rota será responsável por adicionar um novo roteiro",
+            "tags": ["Roteiros"],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Roteiro"          
+                        },
+                        "examples": {
+                            "Roteiro": {
+                                "value": {
+                                    "nome": "Trilha da Vida",
+                                    "dificuldade": 2,
+                                    "equipamentos": ["Garrafa de água","Binóculos"],
+                                    "localizacao": "Parque Ecológico de Guarapiranga",
+                                    "estado": "São Paulo"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Successfully created!",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#/components/schemas/Roteiro"
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Error creating"
+                }
+            }
+        }
+    },
+    "/listar/guias": {
+        "get": {
+            "summary": "Listar guias",
+            "description": "Essa rota será responsável por listar todos os guias da collection",
+            "tags": ["Guias"],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "$ref": "#/components/schemas/Guia"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/listar/guia/{guiaId}": {
+        "get": {
+            "summary": "Obter guia por ID",
+            "description": "Essa rota será responsável por listar um guia por ID",
+            "tags": ["Guias"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "guiaId",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": "true",
+                    "description": "ID a ser listado"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"object",
+                                "$ref":"#/components/schemas/Guia"
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    },
+    "/listar/roteiros": {
+        "get": {
+            "summary": "Listar roteiros",
+            "description": "Essa rota será responsável por listar todos os roteiros da collection",
+            "tags": ["Roteiros"],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "$ref": "#/components/schemas/Roteiro"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/listar/roteiro/{roteiroId}": {
+        "get": {
+            "summary": "Obter roteiro por ID",
+            "description": "Essa rota será responsável por listar um roteiro por ID",
+            "tags": ["Roteiros"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "roteiroId",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": "true",
+                    "description": "ID a ser listado"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"object",
+                                "$ref":"#/components/schemas/Roteiro"
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    },
+    "/atualizar/guia/{guiaId}": {
+        "put": {
+            "summary": "Atualizar guia",
+            "description": "Essa rota será responsável por atualizar um guia",
+            "tags": ["Guias"],
+            "parameters": [
+                {
+                "in": "path",
+                "name": "guiaId",
+                "schema": {
+                    "type": "string"
+                },
+                "required": true,
+                "description": "ID a ser atualizado"
+                }
+               ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Guia"
+                        },
+                        "examples": {
+                            "Guia": {
+                                "value": {
+                                    "nomeGuia": "Manuel Martinez",
+                                    "numeroTelefone": 11234998773,
+                                    "disponivel": true
+                                }
+                            }
+                        }
+                    }
+
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Guia atualizado com sucesso!",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#/components/schemas/Guia"
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "error"
+                }
+            }
+        }
+    },
+    "/atualizar/roteiro/{roteiroId}": {
+        "put": {
+            "summary": "Atualizar roteiro",
+            "description": "Essa rota será responsável por atualizar um roteiro",
+            "tags": ["Roteiros"], 
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "roteiroId",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true,
+                    "description": "ID a ser atualizado"
+                }
+                ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Roteiro"
+                         },
+                        "examples": {
+                            "Roteiro": {
+                                "value": {
+                                    "nome": "Trilha da Nascente",
+                                    "dificuldade": 1,
+                                    "equipamentos": [
+                                        "Garrafa de água", "Binóculos"
+                                    ],
+                                    "localizacao": "Jardim Botánico Paulista",
+                                    "estado": "São Paulo"
+                                }
+                            }
+                                
+                         }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Roteiro atualizado com sucesso!",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#/components/schemas/Roteiro"
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "400": {
+                    "description": "error"}
+                }
+            }
+    },
+    "/inserir/guia/{roteiroId}": {
+        "put": {
+            "summary": "Inserir guia no roteiro",
+            "description": "Essa rota será responsável por atualizar um roteiro com info do seu guia",
+            "tags": ["Roteiros"], 
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "roteiroId",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true,
+                    "description": "ID a ser atualizado"
+                }
+                ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "nomeGuia": {
+                                    "type": "string"
+                                }
+                            }
+                         },
+                        "examples": {
+                            "Guia": {
+                                "value": {
+                                    "nomeGuia": "631d9edf66e7b88d645c512e"
+                                }
+                            }
+                                
+                         }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Roteiro atualizado com sucesso!",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#/components/schemas/Roteiro"
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "400": {
+                    "description": "error"
+                }
+            }
+         }
+    },
+    "/remover/guia/{roteiroId}": {
+        "put": {
+            "summary": "Remover guia do roteiro",
+            "description": "Essa rota será responsável por atualizar um roteiro excluindo info do seu guia",
+            "tags": ["Roteiros"], 
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "roteiroId",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true,
+                    "description": "ID a ser atualizado"
+                }
+                ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "nomeGuia": {
+                                    "type": "string"
+                                }
+                            }
+                         },
+                        "examples": {
+                            "Guia": {
+                                "value": {
+                                    "nomeGuia": "631d9edf66e7b88d645c512e"
+                                }
+                            }
+                                
+                         }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Roteiro atualizado com sucesso!",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#/components/schemas/Roteiro"
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "400": {
+                    "description": "error"
+                }
+            }
+         }
+    },
+    "/deletar/guia/{guiaId}": {
+        "delete": {
+            "summary": "Deletar guia",
+            "description": "Essa rota será responsável por deletar um guia",
+            "tags": ["Guias"],
+            "parameters": [
+                {
+                "in": "path",
+                "name": "guiaId",
+                "schema": {
+                    "type": "string"
+                },
+                "required": true,
+                "description": "ID a ser removido"
+                }
+               ],
+            "responses": {
+                "200": {
+                    "description": "Guia deletado com sucesso!"
+                },
+                "400": {
+                    "description": "Error deleting"
+                }
+            }
+        }
+    },
+    "/deletar/roteiro/{roteiroId}": {
+        "delete": {
+            "summary": "Deletar roteiro",
+            "description": "Essa rota será responsável por deletar um roteiro",
+            "tags": ["Roteiros"],
+            "parameters": [
+                {
+                "in": "path",
+                "name": "roteiroId",
+                "schema": {
+                    "type": "string"
+                },
+                "required": true,
+                "description": "ID a ser removido"
+                }
+               ],
+            "responses": {
+                "200": {
+                    "description": "Roteiro deletado com sucesso!"
+                },
+                "400": {
+                    "description": "Error deleting"
+                }
+            }
+        }
     }
    },
    "components": {
@@ -74,9 +503,32 @@
                 "disponivel": {
                     "type": "boolean"
                 },
-                "id": {
+                "guiaId": {
                     "type": "string"
                 }
+            }
+        },
+        "Roteiro": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string"
+                },
+                "dificuldade": {
+                    "type": "number"
+                },
+                "equipamentos": {
+                    "type": "array"
+                },
+                "localizacao": {
+                    "type": "string"
+                },
+                "estado": {
+                    "type": "string"
+                },
+                "roteiroId": {
+                    "type": "string"
+                } 
             }
         }
     }
