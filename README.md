@@ -1,5 +1,5 @@
 <h1 align="center"> API Rest de Trilhas </h1>
-<p> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+<p align="center"> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
 <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" /> </p>
 
 Esse projeto é uma API Rest de Trilhas desenvolvida com o objetivo de apresentar como projeto final para o curso da Toti. Esse projeto foi desenvolvido utilizando NodeJS, MongoDB para o banco de dados, Mongoose para a conexão do banco de dados com o nosso código e Swagger UI para documentação.
