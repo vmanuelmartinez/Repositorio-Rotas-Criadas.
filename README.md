@@ -22,7 +22,7 @@ Aqui pode acessar ao link do <A HREF="https://github.com/vmanuelmartinez/Reposit
 
 Após baixar o projeto, você pode abrir com o VSCode ou alguma app similar.
 
-- `Passo 1`:Com o VSCode aberto é necessário abrir o terminal, entrar na pasta aonde está o projeto e escrever "npm start" para iniciar o terminal
+- `Passo 1`: Com o VSCode aberto é necessário abrir o terminal, entrar na pasta aonde está o projeto e escrever "npm start" para iniciar o terminal
 - `Passo 2`: Uma vez iniciado, pode começar a utilização dos métodos utilizando aplicativos como o Postman ou Insomnia.
 - `Passo 3`: Finalmente, para ter acesso à documentação, precisa entrar no seu navegador ao seguinte endereço: "localhost:9000/api-docs". Assim, terá acesso ao Swagger UI com as informações da nossa API Rest e os métodos disponíveis para teste.
 
