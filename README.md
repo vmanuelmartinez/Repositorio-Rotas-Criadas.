@@ -16,7 +16,7 @@ Esse projeto é uma API Rest de Trilhas desenvolvida com o objetivo de apresenta
 
 # 📁 Acesso ao projeto
 
-**Indique como é possível baixar ou acessar o código fonte do projeto, seja projeto inicial ou final**
+Aqui pode acessar ao link do <A HREF="https://github.com/vmanuelmartinez/Repositorio-Rotas-Criadas./tree/master"> projeto final </A>
 
 # 🛠️ Abrir e rodar o projeto
 
